@@ -1,3 +1,6 @@
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1979749813.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1433654829.
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:2360845151.
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:4159227077.
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:4077420049.
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:218952118.
@@ -13,6 +16,7 @@
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:2238610906.
 import 'package:flutter/material.dart';
 
+import 'chat_screen.dart';
 import 'forgot_password_screen.dart';
 import 'signup_screen.dart';
 
@@ -101,9 +105,15 @@ class _LogInScreenState extends State<LogInScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                    
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   const SnackBar(content: Text('Processing Data')),
+                      // );
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ChatScreen(),
+                        ),
+                        (route) => false,
                       );
                     }
                   },
