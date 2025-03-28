@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:myapp/Screens/demo_ai_screen.dart' show DemoAIScreen;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:myapp/screens/splash_screen.dart';
 
-import 'Screens/signup_screen.dart';
 
 const apiKey = '...';
 
-void main() {
-   Gemini.init(apiKey: apiKey);
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -22,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
     // Primary color (Deep Sea Blue or Forest Green)
     primaryColor: const Color(0xFF191970), // Deep Sea Blue
+    
     // primaryColor: const Color(0xFF228B22), // Forest Green (alternative)
 
     // Secondary color (Sage Green or Light Blue)
@@ -30,7 +30,13 @@ class MyApp extends StatelessWidget {
 
     // Accent color (Gold or Copper)
     colorScheme: ColorScheme.fromSwatch().copyWith(
+      primary: const Color.fromARGB(255, 161, 161, 196),
         secondary: const Color(0xFFFFD700), // Gold
+        onSecondary: Colors.black,
+        onPrimary: Color.fromARGB(255, 118, 118, 128), // Text color on primary color
+    surface: const Color(0xFFF8F8FF), // Off-White (same as scaffoldBackgroundColor)
+    onSurface: const Color(0xFF333333), // Dark Gray (same as bodyMedium text)
+    
         // secondary: const Color(0xFFB87333), // Copper (alternative)
     ),
     
@@ -87,7 +93,7 @@ class MyApp extends StatelessWidget {
     ),
     // Other customizations...
   ),
-      home: const DemoAIScreen(),
+      home: SplashScreen(),
     );
   }
 }
